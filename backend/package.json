@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "rocket test task",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanilla64/rocket-test-task.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongoDB"
+  ],
+  "author": "Sergey Mashin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanilla64/rocket-test-task/issues"
+  },
+  "homepage": "https://github.com/vanilla64/rocket-test-task#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.9",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
