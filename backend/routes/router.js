@@ -1,18 +1,18 @@
 const router = require('express').Router()
-// const userRouter = require('./userRouter')
 const { notFoundPageMsg } = require('../utils/errors/errorMessages')
 
-const { createUser, loginUser } = require('../controllers/users')
+const { createUser, loginUser, getUser } = require('../controllers/users')
 const { auth } = require('../middlewares/auth')
 
 router.post('/register', createUser)
 router.post('/login', loginUser)
 
-// router.use(userRouter)
 router.use(auth)
 
+router.get('/my-info', getUser)
+
 router.get('/test', (req, res) => {
-  res.send({msg: req.user._id})
+  res.send({msg: req.user._id}) // user ID
 })
 
 router.use('*', (req, res) => {

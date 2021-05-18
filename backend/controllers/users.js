@@ -54,6 +54,18 @@ module.exports.loginUser = async (req, res, next) => {
   }
 }
 
+module.exports.getUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user._id)
+    res.send({
+      name: user.name,
+      lastName: user.lastName,
+      email: user.email,
+    });
+  } catch (err) {
+    next(err)
+  }
+}
 
 // {
 //   "name": "Name",

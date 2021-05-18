@@ -1,0 +1,85 @@
+$transTime: .3s
+
+.form
+  width: 100%
+  display: flex
+  flex-direction: column
+  &__label
+    margin: 0 0 30px
+    width: 100%
+    transition: $transTime
+    &_type_checkbox
+      display: flex
+      align-items: center
+      margin: 0 0 16px
+    &:last-child
+      margin: 0
+  &__input
+    width: 100%
+    background-color: transparent
+    padding: 0 0 13px
+    outline-style: none
+    border: none
+    border-bottom: 2px solid rgba(0, 0, 0, .4)
+    font-size: 16px
+    line-height: 17px
+    transition: $transTime
+    &_type_checkbox
+      height: 24px
+
+    &::placeholder
+      font-style: normal
+      font-weight: 500
+      font-size: 14px
+      line-height: 17px
+    &:focus
+      border-bottom: 2px solid rgba(0, 0, 0, 1)
+  &__btn
+    margin: 86px 0 29px
+    width: 100%
+    height: 50px
+    border-radius: 50px
+    border: 2px solid rgba(0, 0, 0, .5)
+    background: #FFFFFF
+    cursor: pointer
+    font-style: normal
+    font-weight: normal
+    font-size: 18px
+    line-height: 22px
+    text-align: center
+    transition: $transTime
+    &:hover
+      border: 2px solid rgba(0, 0, 0, 1)
+  &__text
+    margin: 0
+    font-style: normal
+    font-weight: normal
+    font-size: 16px
+    line-height: 17px
+  &__link
+    font-style: normal
+    font-weight: normal
+    font-size: 16px
+    line-height: 17px
+    text-decoration: none
+    color: dodgerblue
+    transition: $transTime
+    &:hover
+      opacity: .6
+
+  &__visible-checkbox
+    width: 20px
+    height: 20px
+    margin: 0 12px 0 0
+    border: 1px solid #000
+    box-sizing: border-box
+    transition: $transTime
+
+  &__input[type='checkbox']
+    position: absolute
+    width: 1px
+    height: 1px
+    overflow: hidden
+    clip: rect(0 0 0 0)
+    &:checked + div
+      background-color: red
