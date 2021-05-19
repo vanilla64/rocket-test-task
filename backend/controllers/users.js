@@ -61,16 +61,9 @@ module.exports.getUser = async (req, res, next) => {
       name: user.name,
       lastName: user.lastName,
       email: user.email,
+      isAdmin: user.isAdmin,
     });
   } catch (err) {
     next(err)
   }
 }
-
-// {
-//   "name": "Name",
-//   "lastName": "Last Name",
-//   "email": "q1qqwe@vvxvqv.ru",
-//   "password": "qwerty123",
-//   "isAdmin": true
-// }

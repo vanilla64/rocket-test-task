@@ -1,7 +1,7 @@
 import { BASE_URL } from './constants';
 import { routesMap } from "./routesMap";
 
-const { REGISTER, LOGIN } = routesMap
+const { REGISTER, LOGIN, USER } = routesMap
 
 class Api {
   constructor(url) {
@@ -43,6 +43,16 @@ class Api {
       })
     })
     .then(res => this._initialRequest(res))
+  }
+
+  checkToken = (token) => {
+    return fetch(`${this._url}${USER}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        "authorization": `Bearer ${token}`
+      }
+    }).then((res) => this._initialRequest(res))
   }
 }
 

@@ -7,9 +7,9 @@ const { auth } = require('../middlewares/auth')
 router.post('/register', createUser)
 router.post('/login', loginUser)
 
-// router.use(auth)
+router.use(auth)
 
-router.get('/my-info', getUser)
+router.get('/user', getUser)
 
 router.get('/test', (req, res) => {
   res.send({msg: req.user._id}) // user ID
