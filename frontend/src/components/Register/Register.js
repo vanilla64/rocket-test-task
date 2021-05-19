@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from "../Form/Form";
 import InitialFormLayout from "../InitialFormLayout/InitialFormLayout";
 import { Link } from "react-router-dom";
 import { routesMap } from "../../utils/routesMap";
 
 function Register({ onSubmit }) {
+  const [values, setValues] = useState({})
   const { LOGIN } = routesMap
+
+  const handleChange = (evt) => {
+    const { name, value } = evt.target
+    if (name === 'isAdmin') return setValues((prev) => { return { ...prev, [name]: evt.target.checked } })
+    setValues((prev) => { return { ...prev, [name]: value } })
+
+    console.log(values)
+  }
 
   return (
     <InitialFormLayout title="Register">
@@ -43,7 +52,10 @@ function Register({ onSubmit }) {
           />
         </label>
         <label htmlFor="isAdmin" className="form__label form__label_type_checkbox">
-          <input className="form__input form__input_type_checkbox" type="checkbox" name="isAdmin" id="isAdmin"/>
+          <input
+            onChange={handleChange}
+            className="form__input form__input_type_checkbox"
+            type="checkbox" name="isAdmin" id="isAdmin"/>
           <div className="form__visible-checkbox" />
           <p className="form__text">Set Admin</p>
         </label>
