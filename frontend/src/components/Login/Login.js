@@ -18,8 +18,8 @@ function Login({ onSubmit }) {
     setValues((prev) => { return { ...prev, [name]: value } })
   }
 
-  const handleSubmit = (evt) => {
-    onSubmit()
+  const handleSubmit = () => {
+    onSubmit(values)
   }
 
   return (

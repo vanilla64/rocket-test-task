@@ -5,25 +5,40 @@ import { Link } from "react-router-dom";
 import { routesMap } from "../../utils/routesMap";
 
 function Register({ onSubmit }) {
-  const [values, setValues] = useState({})
+  const [values, setValues] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    password: '',
+    isAdmin: false,
+  })
   const { LOGIN } = routesMap
 
   const handleChange = (evt) => {
     const { name, value } = evt.target
-    if (name === 'isAdmin') return setValues((prev) => { return { ...prev, [name]: evt.target.checked } })
     setValues((prev) => { return { ...prev, [name]: value } })
 
     console.log(values)
   }
 
+  const handleCheckboxChange = (evt) => {
+    const { name, checked } = evt.target
+    setValues((prev) => { return { ...prev, [name]: checked } })
+  }
+
+  const handleSubmit = () => {
+    onSubmit(values)
+  }
+
   return (
     <InitialFormLayout title="Register">
-      <Form onSubmit={onSubmit} btnText="Register">
+      <Form onSubmit={handleSubmit} btnText="Register">
         <label className="form__label">
           <input
             id="name-input" type="text" name="name"
             className="form__input"
             placeholder="Name"
+            onChange={handleChange}
             required
           />
         </label>
@@ -32,6 +47,7 @@ function Register({ onSubmit }) {
             id="lastName-input" type="text" name="lastName"
             className="form__input"
             placeholder="Last Name"
+            onChange={handleChange}
             required
           />
         </label>
@@ -40,6 +56,7 @@ function Register({ onSubmit }) {
             id="email-input" type="email" name="email"
             className="form__input"
             placeholder="Email"
+            onChange={handleChange}
             required
           />
         </label>
@@ -48,12 +65,14 @@ function Register({ onSubmit }) {
             id="password-input" type="password" name="password"
             className="form__input"
             placeholder="Password"
+            onChange={handleChange}
             required
           />
         </label>
         <label htmlFor="isAdmin" className="form__label form__label_type_checkbox">
           <input
-            onChange={handleChange}
+            onChange={handleCheckboxChange}
+            value={values.isAdmin}
             className="form__input form__input_type_checkbox"
             type="checkbox" name="isAdmin" id="isAdmin"/>
           <div className="form__visible-checkbox" />
