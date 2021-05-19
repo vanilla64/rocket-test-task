@@ -47,7 +47,7 @@ module.exports.loginUser = async (req, res, next) => {
       JWT_SECRET
     )
 
-    res.send(token)
+    res.send({token})
 
   } catch (err) {
     next(err)

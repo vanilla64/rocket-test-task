@@ -1,7 +1,7 @@
 import { BASE_URL } from './constants';
 import { routesMap } from "./routesMap";
 
-const { LOGIN } = routesMap
+const { REGISTER, LOGIN } = routesMap
 
 class Api {
   constructor(url) {
@@ -15,14 +15,34 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  register = () => {
-    return fetch(this._url, {method: 'POST'})
-      .then(res => this._initialRequest(res))
+  register = (data) => {
+    const { name, lastName, email, password, isAdmin } = data
+
+    return fetch(`${this._url}${REGISTER}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name, lastName, email, password, isAdmin
+      })
+    })
+    .then(res => this._initialRequest(res))
   }
 
-  login = () => {
-    return fetch(`${this._url}${LOGIN}`, {method: 'POST'})
-      .then(res => this._initialRequest(res))
+  login = (data) => {
+    const { email, password } = data
+
+    return fetch(`${this._url}${LOGIN}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email, password
+      })
+    })
+    .then(res => this._initialRequest(res))
   }
 }
 
